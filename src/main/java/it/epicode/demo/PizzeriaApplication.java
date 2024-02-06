@@ -20,8 +20,7 @@ public class PizzeriaApplication {
 //        System.out.println(ctx.getBean("allPizzas"));
 //        System.out.println(ctx.getBean("allDrinks"));
 //        System.out.println(ctx.getBean("allToppings"));
-//        System.out.println(ctx.getBean("menuCompleto"));
-        System.out.println(ctx.getBean("order1"));
+//        System.out.println(ctx.getBean("menuCompleto"))
         ctx.close();
     }
 }

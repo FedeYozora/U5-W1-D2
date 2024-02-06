@@ -4,6 +4,7 @@ import it.epicode.demo.entities.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import java.time.LocalDateTime;
@@ -11,14 +12,19 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfiguration {
     String baseIngredients = "Formaggio e Pomodoro";
     @Value("${cost-cover}")
-    private double costCover;
+    double costCover;
 
     @Bean
-    public PropertySourcesPlaceholderConfigurer propertyConfig() {
+    public static PropertySourcesPlaceholderConfigurer propertyConfig() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    private double getCostCover() {
+        return costCover;
     }
 
     @Bean
@@ -125,9 +131,5 @@ public class BeansConfiguration {
         }
         totalAmount += getCostCover() * table.getMaxCovers();
         return totalAmount;
-    }
-
-    private double getCostCover() {
-        return costCover;
     }
 }
